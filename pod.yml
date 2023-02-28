@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podemon
+  labels:
+    app: motd
+spec:
+  containers:
+  - name: motd
+    image: caztan/motd:latest
+    env:
+    - name: MESSAGE
+      value: "Hello World"
+    - name: PORT
+      value: "80"
