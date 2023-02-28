@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motd-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: motd
+  template:
+    metadata:
+      labels:
+        app: motd
+    spec:
+      containers:
+      - name: podemon
+        image: caztan/motd:latest
+        env:
+          - name: MESSAGE
+            value: "Hello World"
+          - name: PORT
+            value: "80"
+        ports:
+        - containerPort: 80
